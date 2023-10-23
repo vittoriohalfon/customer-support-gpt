@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors())
 
 const API_KEY = process.env.API_KEY
-const PORT = 8000
+const PORT = process.env.PORT || 8000;
 
 const functions = [
     {
@@ -519,4 +519,3 @@ function gestisciMatricolaNonAllineata() {
 }
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}. `))
-console.log(`API Key is: ${API_KEY}`)
