@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors())
 
 const API_KEY = process.env.API_KEY
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000
 
 const functions = [
     {
@@ -118,7 +118,13 @@ const functions = [
   ]
 
   // Memorizzazione dello stato della conversazione
-let conversationHistory = []
+  let conversationHistory = [
+    {
+        role: "system",
+        content: "Sei un operatore del customer service di Atlantica Digital spa, ti sono state definite varie funzioni, chiamale se necessario. Se non sai la risposta a qualcosa, riferisci all'utente che lo metterai a contatto con un operatore umano."
+    }
+]
+
 
 app.post('/completions', async (req, res) => {
     const userMessage = {
@@ -164,29 +170,29 @@ app.post('/completions', async (req, res) => {
                 role: "function",
                 name: functionName,
                 content: `Risultato funzione: ${actionResult}. Informa l'utente di quanto accaduto SENZA chiamare un'altra funzione.`
-            };
-            messages.push(functionResponseMessage);
+            }
+            messages.push(functionResponseMessage)
 
             // Second API Call
-            response = await callOpenAI(messages);
+            response = await callOpenAI(messages)
 
             const aiResponse = {
                 role: "assistant",
                 content: response.choices[0].message.content
-            };
-            messages.push(aiResponse);
-            conversationHistory.push(aiResponse);
+            }
+            messages.push(aiResponse)
+            conversationHistory.push(aiResponse)
         }
 
-        res.send(response);
+        res.send(response)
     } catch (error) {
-        console.log(error);
-        res.status(500).send({ error: 'An error occurred while processing your request.' });
+        console.log(error)
+        res.status(500).send({ error: 'An error occurred while processing your request.' })
     }
-});
+})
 
 async function callOpenAI(messages) {
-    console.log("Sending messages:", messages);
+    console.log("Sending messages:", messages)
     const options = {
         method: "POST",
         headers: {
@@ -201,10 +207,10 @@ async function callOpenAI(messages) {
             temperature: 0.1,
             max_tokens: 200
         })
-    };
+    }
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", options);
-    return await response.json();
+    const response = await fetch("https://api.openai.com/v1/chat/completions", options)
+    return await response.json()
 }
 
 
