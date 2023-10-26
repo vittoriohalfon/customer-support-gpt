@@ -428,7 +428,7 @@ async function sostituzione_dc({
 
 async function annullaAvviso({idAvviso, idPdr = null}) {
     if (idPdr) {
-        return `Avviso ${idAvviso}, ${idPdr} annullato con successo.`
+        return `Avviso ${idAvviso}, relativo al PDR ${idPdr} annullato con successo.`
     } else {
         return `Avviso ${idAvviso} annullato con successo.`
     }
