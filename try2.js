@@ -126,6 +126,7 @@ const functions = [
     }
 ]
 
+app.use(express.static('public'))
 
 app.post('/completions', async (req, res) => {
     const userMessage = {
