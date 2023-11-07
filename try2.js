@@ -126,7 +126,11 @@ const functions = [
     }
 ]
 
-app.use(express.static('public'))
+app.use(express.static('build'))
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  })
 
 app.post('/completions', async (req, res) => {
     const userMessage = {
