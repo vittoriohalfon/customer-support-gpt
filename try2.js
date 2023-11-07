@@ -4,6 +4,7 @@ import fetch from 'node-fetch'
 import pg from 'pg'
 import dotenv from 'dotenv'
 import nodemailer from 'nodemailer'
+import path from 'path'
 
 dotenv.config()
 
