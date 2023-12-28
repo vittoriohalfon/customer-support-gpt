@@ -94,7 +94,7 @@ function App() {
   function LoadingIcon() {
     return (
         <div className="loading-icon">
-            AtlanticaGPT is analyzing the request...
+            QueriesGPT is analyzing the request...
         </div>
     )
 }
@@ -111,7 +111,7 @@ function App() {
         </nav>
       </section>
       <section className = "main">
-        {!currentTitle && <h1>SupportAI - Atlantica Digital</h1>}
+        {!currentTitle && <h1>SupportAI - Customer Support</h1>}
         <ul className = "feed">
           {currentChat?.map((chatMessage, index) => <li key={index}> 
           <p className = "role">{chatMessage.role}</p>
@@ -124,7 +124,7 @@ function App() {
             <textarea value={value} onChange={(e) => setValue(e.target.value)} onKeyDown={handleKeyDown} rows={calculateRows(value)}/>
             <div id = "submit" onClick={getMessages}>➢</div>
           </div>
-          <p className = "info">Demo chatbot che utilizza IA generativa per la gestione di richieste di assistenza tecnica per Atlantica Digital.
+          <p className = "info">This chatbot was designed to solve specific customer queries, including updating relevant DB tables, refer to README.md.
           </p>
         </div>
       </section>
