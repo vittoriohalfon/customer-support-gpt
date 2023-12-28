@@ -74,7 +74,7 @@ const functions = [
             "type": "object",
             "properties": {
                 "idAvviso": {"type": "string", "description": "L'ID dell'avviso da annullare. (esempio: MIM3349807)"},
-                "idPdr": {"type": "string", "description": "L'ID del PDR che ha generato l'avviso. (esempio: 10400000635476"},
+                "idPdr": {"type": "string", "description": "L'ID del PDR che ha generato l'avviso. (esempio: 10400000635476)"},
             },
             "required": ["idAvviso"]
         }
@@ -210,8 +210,8 @@ async function callOpenAI(messages) {
             messages: messages,
             functions: functions,
             function_call: "auto",
-            temperature: 0.1,
-            max_tokens: 200
+            temperature: 0,
+            max_tokens: 300
         })
     }
 
